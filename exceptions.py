@@ -21,10 +21,6 @@ class GroupAlreadyJoinedError(UniversityError):
     """Студент уже состоит в группе"""
     pass
 
-# ========================
-# Базовый класс Person
-# ========================
-
 class Person:
     def __init__(self, name: str, surname: str, birth_date: str):
         self.name = name
@@ -37,10 +33,6 @@ class Person:
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}, {self.surname})"
 
-
-# ========================
-# Professor
-# ========================
 
 class Professor(Person):
     def __init__(self, name: str, surname: str, birth_date: str, employee_id: str):
@@ -71,10 +63,6 @@ class Professor(Person):
             print(f"[Ошибка добавления занятия] {e}")
 
 
-# ========================
-# Student
-# ========================
-
 class Student(Person):
     def __init__(self, name: str, surname: str, birth_date: str, student_id: str):
         super().__init__(name, surname, birth_date)
@@ -92,7 +80,7 @@ class Student(Person):
             enrollment = Enrollment(self, course)
             self.enrollments.append(enrollment)
             course.add_student(self)
-            print(f"✅ {self.full_name()} успешно записан на курс '{course.title}'")
+            print(f" {self.full_name()} успешно записан на курс '{course.title}'")
         except DuplicateEnrollmentError as e:
             print(f"[Ошибка записи] {e}")
         except Exception as e:
@@ -106,16 +94,12 @@ class Student(Person):
                 )
             self.groups.append(group)
             group.add_student(self)
-            print(f"✅ {self.full_name()} вступил в группу '{group.group_name}'")
+            print(f" {self.full_name()} вступил в группу '{group.group_name}'")
         except GroupAlreadyJoinedError as e:
             print(f"[Ошибка добавления в группу] {e}")
         except Exception as e:
             print(f"[Системная ошибка группы] {e}")
 
-
-# ========================
-# Department, Faculty, Course
-# ========================
 
 class Department:
     def __init__(self, name: str):
@@ -175,10 +159,6 @@ class Course:
             self.students.append(student)
 
 
-# ========================
-# Enrollment
-# ========================
-
 class Enrollment:
     def __init__(self, student: Student, course: Course):
         self.student = student
@@ -191,16 +171,12 @@ class Enrollment:
             if not (0 <= grade <= 54):
                 raise InvalidGradeError(f"Оценка {grade} недопустима. Должна быть от 0 до 54.")
             self.grade = grade
-            print(f"✅ Оценка {grade} успешно установлена для {self.student.full_name()} по курсу '{self.course.title}'")
+            print(f" Оценка {grade} успешно установлена для {self.student.full_name()} по курсу '{self.course.title}'")
         except InvalidGradeError as e:
             print(f"[Ошибка оценки] {e}")
         except Exception as e:
             print(f"[Системная ошибка оценки] {e}")
 
-
-# ========================
-# Group, Room, Lesson, Schedule
-# ========================
 
 class Group:
     def __init__(self, group_name: str):
@@ -225,12 +201,11 @@ class Room:
 
     def add_lesson(self, lesson: 'Lesson'):
         try:
-            # Проверка вместимости УДАЛЕНА (т.к. исключение RoomCapacityExceededError удалено)
             if lesson not in self.lessons:
                 self.lessons.append(lesson)
                 lesson.set_room(self)
                 course_title = lesson.course.title if lesson.course else 'N/A'
-                print(f"✅ Занятие по курсу '{course_title}' добавлено в аудиторию {self.room_number}")
+                print(f" Занятие по курсу '{course_title}' добавлено в аудиторию {self.room_number}")
         except Exception as e:
             print(f"[Ошибка добавления занятия в аудиторию] {e}")
 
@@ -279,9 +254,7 @@ class Schedule:
             self.lessons.append(lesson)
 
 
-# ========================
 # Демонстрация работы (с ошибками и без)
-# ========================
 
 if __name__ == "__main__":
     print("=== Университетская система (с обработкой исключений) ===\n")
