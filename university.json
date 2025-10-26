@@ -1,0 +1,16 @@
+[
+  {
+    "student_id": "124017",
+    "first_name": "Sabina",
+    "last_name": "Babaeva",
+    "birth_date": "2005-03-22T00:00:00",
+    "enrollments": [
+      {
+        "course_code": "09.03.03",
+        "enrollment_date": "2025-10-27T14:30:00",
+        "grade": 48
+      }
+    ],
+    "groups": ["ИДБ-24-11"]
+  }
+]
