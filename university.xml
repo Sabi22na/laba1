@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<university>
+  <departments>
+    <department name="Computer Science">
+      <faculties>
+        <faculty_ref>Engineering</faculty_ref>
+      </faculties>
+    </department>
+  </departments>
+
+  <faculties>
+    <faculty name="Engineering">
+      <department_ref>Computer Science</department_ref>
+      <courses>
+        <course_ref>09.03.03</course_ref>
+      </courses>
+    </faculty>
+  </faculties>
+
+  <professors>
+    <professor id="prof21053">
+      <name>Alice</name>
+      <surname>Johnson</surname>
+      <birth_date>2006-09-21</birth_date>
+      <courses>
+        <course_ref>09.03.03</course_ref>
+      </courses>
+    </professor>
+  </professors>
+
+  <students>
+    <student id="124017">
+      <name>Sabina</name>
+      <surname>Babaeva</surname>
+      <birth_date>2005-03-22</birth_date>
+      <enrollments>
+        <enrollment>
+          <course_ref>09.03.03</course_ref>
+          <enrollment_date>2025-10-27 14:30</enrollment_date>
+          <grade>48</grade>
+        </enrollment>
+      </enrollments>
+      <groups>
+        <group_ref>ИДБ-24-11</group_ref>
+      </groups>
+    </student>
+
+    <student id="123067">
+      <name>Charlie</name>
+      <surname>Green</surname>
+      <birth_date>2006-11-30</birth_date>
+      <enrollments>
+        <enrollment>
+          <course_ref>09.03.03</course_ref>
+          <enrollment_date>2025-10-27 14:30</enrollment_date>
+          <grade>48</grade>
+        </enrollment>
+      </enrollments>
+      <groups>
+        <group_ref>ИДБ-24-11</group_ref>
+      </groups>
+    </student>
+
+    <student id="124143">
+      <name>David</name>
+      <surname>White</surname>
+      <birth_date>2006-09-05</birth_date>
+      <enrollments>
+        <enrollment>
+          <course_ref>09.03.03</course_ref>
+          <enrollment_date>2025-10-27 14:35</enrollment_date>
+        </enrollment>
+      </enrollments>
+    </student>
+  </students>
+
+  <courses>
+    <course code="09.03.03">
+      <title>Introduction to Programming</title>
+      <credits>5</credits>
+      <faculty_ref>Engineering</faculty_ref>
+      <professor_ref>prof21053</professor_ref>
+    </course>
+  </courses>
+
+  <groups>
+    <group name="ИДБ-24-11">
+      <students>
+        <student_ref>124017</student_ref>
+        <student_ref>123067</student_ref>
+      </students>
+    </group>
+  </groups>
+
+  <rooms>
+    <room number="305">
+      <capacity>2</capacity>
+      <lessons>
+        <lesson_ref>L1</lesson_ref>
+      </lessons>
+    </room>
+  </rooms>
+
+  <lessons>
+    <lesson id="L1">
+      <time>10:20</time>
+      <duration_minutes>90</duration_minutes>
+      <course_ref>09.03.03</course_ref>
+      <professor_ref>prof21053</professor_ref>
+      <room_ref>305</room_ref>
+    </lesson>
+  </lessons>
+</university>
