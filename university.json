@@ -3,14 +3,32 @@
     "student_id": "124017",
     "first_name": "Sabina",
     "last_name": "Babaeva",
-    "birth_date": "2005-03-22T00:00:00",
+    "birth_date": "2005-03-22",
     "enrollments": [
       {
         "course_code": "09.03.03",
-        "enrollment_date": "2025-10-27T14:30:00",
-        "grade": 48
+        "enrollment_date": "2024-08-28",
+        "grade": null
       }
     ],
-    "groups": ["ИДБ-24-11"]
+    "groups": [
+      "ИДБ-24-11"
+    ]
+  },
+  {
+    "student_id": "123067",
+    "first_name": "Charlie",
+    "last_name": "Green",
+    "birth_date": "2006-11-30",
+    "enrollments": [
+      {
+        "course_code": "09.03.03",
+        "enrollment_date": "2025-10-27T03:33:54.043893",
+        "grade": null
+      }
+    ],
+    "groups": [
+      "ИДБ-24-11"
+    ]
   }
 ]

@@ -37,6 +37,23 @@ class Student(Person):
         self.enrollments: List['Enrollment'] = []
         self.groups: List['Group'] = []
 
+    def to_dict(self):
+        return {
+            "student_id": self.student_id,
+            "first_name": self.name,
+            "last_name": self.surname,
+            "birth_date": self.birth_date,
+            "enrollments": [
+                {
+                    "course_code": e.course.course_code,
+                    "enrollment_date": e.enrollment_date.isoformat(),
+                    "grade": e.grade
+                }
+                for e in self.enrollments
+            ],
+            "groups": [g.group_name for g in self.groups]
+        }
+
     def enroll_in_course(self, course: 'Course'):
         enrollment = Enrollment(self, course)
         self.enrollments.append(enrollment)
@@ -99,7 +116,7 @@ class Enrollment:
         self.grade: Optional[int] = None  # Оценка по курсу
 
     def set_grade(self, grade: int):
-        if 0 <= grade <= 100:
+        if 0 <= grade <= 54:
             self.grade = grade
         else:
             raise ValueError("Оценка должна быть от 0 до 54")
