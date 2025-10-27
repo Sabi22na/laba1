@@ -113,8 +113,6 @@ class Department:
                 faculty.set_department(self)
         except Exception as e:
             print(f"[Ошибка добавления факультета в кафедру] {e}")
-
-
 class Faculty:
     def __init__(self, name: str):
         self.name = name
@@ -255,7 +253,6 @@ class Schedule:
 
 
 # Демонстрация работы (с ошибками и без)
-
 if __name__ == "__main__":
     print("=== Университетская система (с обработкой исключений) ===\n")
 

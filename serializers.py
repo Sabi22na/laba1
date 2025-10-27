@@ -1,7 +1,6 @@
 import json
 import xml.etree.ElementTree as ET
 from typing import List
-from univers import Student
 
 def save_students_to_json(students: List['Student'], filename: str):
     data = [s.to_dict() for s in students]

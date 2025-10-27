@@ -1,18 +1,2 @@
-<?xml version='1.0' ?>
-<students>
-  <student student_id="124017">
-    <first_name>Sabina</first_name>
-    <last_name>Babaeva</last_name>
-    <birth_date>2005-03-22</birth_date>
-    <enrollments>
-      <enrollment>
-        <course_code>09.03.03</course_code>
-        <enrollment_date>2024-08-28</enrollment_date>
-        <grade>48</grade>
-      </enrollment>
-    </enrollments>
-    <groups>
-      <group>ИДБ-24-11</group>
-    </groups>
-  </student>
-</students>
+<?xml version='1.0' encoding='us-ascii'?>
+<students><student student_id="124017"><first_name>Sabina</first_name><last_name>Babaeva</last_name><birth_date>2005-03-22</birth_date><enrollments><enrollment><course_code>09.03.03</course_code><enrollment_date>2025-10-28T02:12:36.650517</enrollment_date><grade>48</grade></enrollment><enrollment><course_code>09.03.03</course_code><enrollment_date>2025-10-28T02:12:36.650517</enrollment_date></enrollment></enrollments><groups><group>&#1048;&#1044;&#1041;-24-11</group></groups></student><student student_id="123067"><first_name>Charlie</first_name><last_name>Green</last_name><birth_date>2006-11-30</birth_date><enrollments><enrollment><course_code>09.03.03</course_code><enrollment_date>2025-10-28T02:12:36.650517</enrollment_date></enrollment><enrollment><course_code>09.03.03</course_code><enrollment_date>2025-10-28T02:12:36.650517</enrollment_date></enrollment></enrollments><groups><group>&#1048;&#1044;&#1041;-24-11</group></groups></student></students>

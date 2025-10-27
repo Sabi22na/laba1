@@ -7,7 +7,12 @@
     "enrollments": [
       {
         "course_code": "09.03.03",
-        "enrollment_date": "2024-08-28",
+        "enrollment_date": "2025-10-28T02:12:36.650517",
+        "grade": 48
+      },
+      {
+        "course_code": "09.03.03",
+        "enrollment_date": "2025-10-28T02:12:36.650517",
         "grade": null
       }
     ],
@@ -23,7 +28,12 @@
     "enrollments": [
       {
         "course_code": "09.03.03",
-        "enrollment_date": "2025-10-27T03:33:54.043893",
+        "enrollment_date": "2025-10-28T02:12:36.650517",
+        "grade": null
+      },
+      {
+        "course_code": "09.03.03",
+        "enrollment_date": "2025-10-28T02:12:36.650517",
         "grade": null
       }
     ],
