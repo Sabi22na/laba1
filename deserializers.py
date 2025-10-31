@@ -21,21 +21,25 @@ def load_students_from_json(filename: str) -> List[Student]:
         for group_name in item.get("groups", []):
             group = Group(group_name)
             student.groups.append(group)
-            group.add_student(student)
 
-        # Записи на курсы
         for en_data in item.get("enrollments", []):
-            course = Course(en_data["course_code"], "Unknown Course", 0)
+            # сохраняем название курса из JSON
+            course_title = en_data.get("course_title", "Introduction to Programming")
+            course = Course(
+                course_code=en_data["course_code"],
+                title=course_title,
+                credits=5
+            )
             enrollment = Enrollment(student, course)
             enrollment.enrollment_date = datetime.fromisoformat(en_data["enrollment_date"])
             if en_data.get("grade") is not None:
                 enrollment.grade = int(en_data["grade"])
             student.enrollments.append(enrollment)
-            course.add_student(student)
 
         students.append(student)
 
     return students
+
 
 def load_students_from_xml(filename: str) -> List[Student]:
     tree = ET.parse(filename)
@@ -55,14 +59,17 @@ def load_students_from_xml(filename: str) -> List[Student]:
             for g_elem in groups_elem.findall("group"):
                 group = Group(g_elem.text)
                 student.groups.append(group)
-                group.add_student(student)
 
         # Записи на курсы
         enrollments_elem = s_elem.find("enrollments")
         if enrollments_elem is not None:
             for en_elem in enrollments_elem.findall("enrollment"):
                 course_code = en_elem.find("course_code").text
-                course = Course(course_code, "Unknown Course", 0)
+                # Ищем название курса в XML, если нет - используем по умолчанию
+                title_elem = en_elem.find("course_title")
+                course_title = title_elem.text if title_elem is not None else "Introduction to Programming"
+
+                course = Course(course_code, course_title, 5)
                 enrollment = Enrollment(student, course)
                 date_str = en_elem.find("enrollment_date").text
                 enrollment.enrollment_date = datetime.fromisoformat(date_str)
@@ -70,7 +77,6 @@ def load_students_from_xml(filename: str) -> List[Student]:
                 if grade_elem is not None and grade_elem.text:
                     enrollment.grade = int(grade_elem.text)
                 student.enrollments.append(enrollment)
-                course.add_student(student)
         students.append(student)
 
     return students

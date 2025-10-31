@@ -6,13 +6,38 @@ if __name__ == "__main__":
     dept = Department("Computer Science")
     fac = Faculty("Engineering")
     prof = Professor("Alice", "Johnson", "2006-09-21", "prof21053")
-    stud1 = Student("Sabina", "Babaeva", "2005-03-22", "124017")
-    stud2 = Student("Charlie", "Green", "2006-11-30", "123067")
     course = Course("09.03.03", "Introduction to Programming", 5)
     group = Group("ИДБ-24-11")
     room = Room("305", 2)
     lesson = Lesson("10:20", 90)
     schedule = Schedule()
+    try:
+        # Пробуем загрузить из JSON
+        students = load_students_from_json("university.json")
+        print("Данные загружены из university.json")
+    except FileNotFoundError:
+        # Если файла нет, пробуем загрузить из XML
+        try:
+            students = load_students_from_xml("university.xml")
+            print("Данные загружены из university.xml")
+        except FileNotFoundError:
+            # Если файлов нет вообще, создаем тестовые данные
+            print("Файлы не найдены, создаем тестовые данные...")
+            students = [
+                Student("Sabina", "Babaeva", "2005-03-22", "124017"),
+                Student("Charlie", "Green", "2006-11-30", "123067")
+            ]
+    # Сохранение
+    stud1 = students[0]
+    stud2 = students[1]
+    save_students_to_json(students, "university.json")
+    save_students_to_xml(students, "university.xml")
+    # Сохранение данных
+    print("Данные успешно сохранены в university.json и university.xml")
+
+    # Загрузка данных
+    loaded_students_json = load_students_from_json("university.json")
+    loaded_students_xml = load_students_from_xml("university.xml")
 
     # Настройка структуры
     dept.add_faculty(fac)
@@ -39,22 +64,19 @@ if __name__ == "__main__":
     stud1.join_group(group)
     stud2.join_group(group)
 
-    # Сохранение
-    all_students = [stud1, stud2]
-    save_students_to_json(all_students, "university.json")
-    save_students_to_xml(all_students, "university.xml")
-    # Сохранение данных
-    all_students = [stud1, stud2]
-    save_students_to_json(all_students, "university.json")
-    save_students_to_xml(all_students, "university.xml")
-    print("Данные успешно сохранены в university.json и university.xml")
-
-    # Загрузка данных
-    loaded_students_json = load_students_from_json("university.json")
-    loaded_students_xml = load_students_from_xml("university.xml")
 
     # Вывод информации
     for i, s in enumerate(loaded_students_json, 1):
+        print(f"\n--- Студент {i} ---")
+        print(f"  Имя: {s.full_name()}")
+        print(f"  ID: {s.student_id}")
+        print(f"  Группа: {s.groups[0].group_name if s.groups else 'Нет'}")
+        if s.enrollments:
+            e = s.enrollments[0]
+            print(f"  Курс: {e.course.title}")
+            print(f"  Оценка: {e.grade if e.grade is not None else 'Не выставлена'}")
+
+    for i, s in enumerate(loaded_students_xml, 1):
         print(f"\n--- Студент {i} ---")
         print(f"  Имя: {s.full_name()}")
         print(f"  ID: {s.student_id}")
